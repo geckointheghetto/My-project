@@ -19,6 +19,8 @@ public class Spawner : MonoBehaviour
      */
 
     // Your code here
+    [SerializeField]
+    GameObject spawnPrefab;
 
 
 
@@ -30,6 +32,17 @@ public class Spawner : MonoBehaviour
          */
 
         // Your code here
+        if (Input.GetKeyDown(spawnKey))
+        {
+            GameObject obj = Instantiate(spawnPrefab);
+
+            obj.transform.position = new Vector3(
+                Random.Range(-spawnRange, spawnRange),
+                Random.Range(0f, spawnRange),
+                Random.Range(-spawnRange, spawnRange)
+                );
+            obj.transform.parent = transform;
+        }
 
     }
 }
